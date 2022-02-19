@@ -1,0 +1,136 @@
+
+
+<body>
+<h1>Lista de Produtos</h1>
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Preço</th>
+    <th>Marca</th>
+    <th>Tipo de Hardware</th>
+    <th>Estado</th>
+    <th >Ano de lançamento</th>
+    <th >RGB</th>
+    <th >Operação</th>
+  </tr>
+  <tr *ngFor="let produto of lista_produtos; let i = index">  <!-- for do ng -->
+    <td>{{produto.getNome()}}</td>    <!-- fazendo orientado a objeto -->
+    <td>{{produto.getPreco()}}</td>
+    <td>{{produto.getMarca()}}</td>
+    <td>{{produto.getHardware()}}</td>
+    <td>{{produto.getEstado()}}</td>
+    <td>{{produto.getAnolanc()}}</td>
+    <td>{{produto.getRgb()}}</td>
+    <td>
+      <button (click)="editar(i)" mat-button color="primary">Editar</button>
+      <button (click)="excluir(i)" mat-button color="warn">Excluir</button>
+      
+    </td>
+  </tr>
+</table>
+
+
+
+
+
+
+
+
+<hr>
+
+
+
+
+<div *ngIf="!edicao; else editarProduto">    <!-- if para mudar o h1 caso clique em editar produto -->
+<h1>Adicionar Hardware</h1>
+</div>
+
+<ng-template #editarProduto>     
+  <h1>Editar Hardware</h1>
+</ng-template>
+
+
+<mat-form-field class="example-full-width" appearance="fill">
+<mat-label>Nome:</mat-label>
+<input matInput placeholder="Ex: GTX 980 TI" type="text" [(ngModel)]="nome"> 
+</mat-form-field>
+
+<br>
+<mat-form-field class="example-full-width" appearance="fill">
+<mat-label>Preço:</mat-label>
+<input matInput placeholder="Ex: 100.00" type="number" [(ngModel)]="preco">
+</mat-form-field>
+
+<br>
+
+<mat-form-field class="example-full-width" appearance="fill">
+  <mat-label>Marca:</mat-label>
+<input matInput placeholder="Ex: ASUS" type="text" [(ngModel)]="marca"> 
+</mat-form-field>
+
+<br>
+
+
+<mat-form-field class="example-full-width" appearance="fill">
+<mat-label>Tipo de Hardware:</mat-label>
+<select matNativeControl required name="hardware" id="hardware" [(ngModel)]="hardware">
+  <option value="Placa-mãe">Placa-mãe</option>
+  <option value="Placa de vídeo">Placa de vídeo</option>
+  <option value="Fonte">Fonte</option>
+  <option value="Memoria-ram">Memória RAM</option>
+  <option value="Processador">Processador</option>
+  <option value="Outro" >Outro</option>
+</select>
+</mat-form-field>
+
+<br>
+
+<mat-form-field class="example-full-width" appearance="fill">
+<mat-label>Estado do produto:</mat-label>
+<select matNativeControl required name="estado" id="estado" [(ngModel)]="estado">
+  <option value="Novo">Novo</option>
+  <option value="Semi-Novo">Semi-Novo</option>
+  <option value="Usado">Usado</option>
+</select>
+</mat-form-field>
+
+<br>
+
+<mat-form-field class="example-full-width" appearance="fill">
+<mat-label>Ano de lançamento:</mat-label>
+<select matNativeControl required name="anolanc" id="anolanc" [(ngModel)]="anolanc">
+    <option value="2010">2010</option>
+    <option value="2011">2011</option>
+    <option value="2012">2012</option>
+    <option value="2013">2013</option>
+    <option value="2014">2014</option>
+    <option value="2015">2015</option>
+    <option value="2016">2016</option>
+    <option value="2017">2017</option>
+    <option value="2018">2018</option>
+    <option value="2019">2019</option>
+    <option value="2020">2020</option>
+    <option value="2021">2021</option>
+    <option value="2022">2022</option>
+</select>
+</mat-form-field>
+
+<br>
+
+<mat-form-field class="example-full-width" appearance="fill">
+<mat-label>Tem RGB?</mat-label>
+<select matNativeControl required name="rgb" id="rgb" [(ngModel)]="rgb">
+  <option value="Sim">Sim</option>
+  <option value="Não">Não</option>
+</select>
+</mat-form-field>
+
+<br>
+
+
+
+
+ 
+      <button mat-button (click)="salvar()">Salvar</button>
+    
+</body>
